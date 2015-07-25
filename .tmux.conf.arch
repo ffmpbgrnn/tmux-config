@@ -36,13 +36,12 @@ set -g status-interval 1
 set -g status-justify centre # center align window list
 set -g status-left-length 20
 set -g status-right-length 140
-
-#set -g status-left '#[fg=green]#H #[fg=black]• #[fg=green,bright]#(uname -r | cut -c 1-6)#[default]'
-#set -g status-right '#[fg=white,bg=default]#([[ -n "$NETDEV" ]] && bwrate $NETDEV || bwrate eth0) #[fg=green,bg=default,bright]#(tmux-mem-cpu-load 1) #[fg=red,dim,bg=default]#(uptime | cut -f 4-5 -d " " | cut -f 1 -d ",") #[fg=white,bg=default]%a%l:%M:%S %p#[default] #[fg=blue]%Y-%m-%d'
-#set -g status-right '#[fg=green,bg=default,bright]#(tmux-mem-cpu-load -i 1) #[fg=red,dim,bg=default]#(uptime | cut -f 4-5 -d " " | cut -f 1 -d ",") #[fg=white,bg=default]%a%l:%M:%S %p#[default] #[fg=blue]%Y-%m-%d'
+set -g status-left '#[fg=green]#H #[fg=black]• #[fg=green,bright]#(uname -r | cut -c 1-6)#[default]'
+<<<<<<< HEAD
+set -g status-right '#[fg=white,bg=default]#([[ -n "$NETDEV" ]] && bwrate $NETDEV || bwrate eth0) #[fg=green,bg=default,bright]#(tmux-mem-cpu-load 1) #[fg=red,dim,bg=default]#(uptime | cut -f 4-5 -d " " | cut -f 1 -d ",") #[fg=white,bg=default]%a%l:%M:%S %p#[default] #[fg=blue]%Y-%m-%d'
 =======
-#set -g status-left '#[fg=green]#H #[fg=black]• #[fg=green,bright]#(uname -r | cut -c 1-6)#[default]'
-#set -g status-right '#[fg=green,bg=default,bright]#(tmux-mem-cpu-load 1) #[fg=red,dim,bg=default]#(uptime | cut -f 4-5 -d " " | cut -f 1 -d ",") #[fg=white,bg=default]%a%l:%M:%S %p#[default] #[fg=blue]%Y-%m-%d'
+set -g status-right '#[fg=green,bg=default,bright]#(tmux-mem-cpu-load -i 1) #[fg=red,dim,bg=default]#(uptime | cut -f 4-5 -d " " | cut -f 1 -d ",") #[fg=white,bg=default]%a%l:%M:%S %p#[default] #[fg=blue]%Y-%m-%d'
+>>>>>>> f487992cbd8f8077af260f5486df803d7d6d68cf
 
 # C-b is not acceptable -- Vim uses it
 set-option -g prefix C-a
@@ -106,7 +105,6 @@ if-shell "[[ `tmux -V` == *1.9* ]]" "unbind '\"'; bind '\"' split-window -v -c '
 if-shell "[[ `tmux -V` == *1.9* ]]" 'unbind v; bind v split-window -h -c "#{pane_current_path}"'
 if-shell "[[ `tmux -V` == *1.9* ]]" 'unbind %; bind % split-window -h -c "#{pane_current_path}"'
 
-
 unbind '"'
 bind - splitw -v
 unbind %
@@ -119,7 +117,6 @@ bind ^l resizep -R 10
 
 bind ^u swapp -U
 bind ^d swapp -D
-
 # List of plugins
 # Supports `github_username/repo` or full git repo URLs
 set -g @tpm_plugins '              \
@@ -140,4 +137,3 @@ setw -g c0-change-trigger 10
 setw -g c0-change-interval 250
 run-shell '~/.tmux/plugins/tpm/tpm'
 
-set -g default-terminal "screen-256color"
